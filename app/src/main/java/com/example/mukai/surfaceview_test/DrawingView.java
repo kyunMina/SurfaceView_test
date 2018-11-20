@@ -41,19 +41,31 @@ public class DrawingView extends View {
     public boolean onTouchEvent(MotionEvent event) {
         if( event.getAction() == MotionEvent.ACTION_DOWN){
             // 新しい描画
+//            currentStroke = new ArrayList<PointF>();
+//            return true;
+
             currentStroke = new ArrayList<PointF>();
             return true;
         }
         else if(event.getAction() == MotionEvent.ACTION_MOVE){
-            currentStroke.add(new PointF(event.getX(),event.getY()));
+//            currentStroke.add(new PointF(event.getX(),event.getY()));
+//            invalidate();
+//            return true;
+
             invalidate();
             return true;
         }
         else if(event.getAction()==MotionEvent.ACTION_UP){
+//            history.add(currentStroke);
+//            currentStroke = null;
+//            invalidate();
+//            return true;
+
+            currentStroke.add(new PointF(event.getX(),event.getY()));
+            currentStroke.add(new PointF(event.getX()-1,event.getY()-1));
             history.add(currentStroke);
             currentStroke = null;
             invalidate();
-
             return true;
         }
 
@@ -70,7 +82,8 @@ public class DrawingView extends View {
         PointF startPoint = null;
         for(PointF pf:stroke){
             if( startPoint != null){
-                canvas.drawLine(startPoint.x, startPoint.y, pf.x, pf.y, paint);
+                //canvas.drawLine(startPoint.x, startPoint.y, pf.x, pf.y, paint);
+                canvas.drawCircle(pf.x,pf.y,20,paint);
             }
 
             startPoint = pf;
