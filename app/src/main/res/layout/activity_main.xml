@@ -11,18 +11,35 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         />
-    <Button
-        android:id="@+id/btnUndo"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="undo"
-        />
-    <Button
-        android:id="@+id/btnRedo"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnUndo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UNDO"
+            />
+        <Button
+            android:id="@+id/btnRedo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="REDO"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/btnUndo"
-        android:text="redo"
+        android:layout_alignParentRight="true"
+        android:text="TEST"
+        android:textSize="15pt"
         />
+
+
 
 </RelativeLayout>

@@ -2,22 +2,28 @@ package com.example.mukai.surfaceview_test;
 
 import java.util.ArrayList;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PointF;
+import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
 
 public class DrawingView extends View {
 
     private final HistoryStack<ArrayList<PointF>> history = new HistoryStack<ArrayList<PointF>>();
     private ArrayList<PointF> currentStroke;
+    public MainActivity mainActivity = new MainActivity();
+    public TextView Counter = findViewById(R.id.counter);
 
     public DrawingView(Context context, AttributeSet attrs) {
         super(context, attrs);
+
         // TODO Auto-generated constructor stub
     }
 
@@ -66,6 +72,13 @@ public class DrawingView extends View {
             history.add(currentStroke);
             currentStroke = null;
             invalidate();
+
+//            mainActivity = new MainActivity();
+//            mainActivity.TextChanged();
+
+//            Counter = new TextView(getContext());
+//            Counter.setTextColor(Color.RED);
+
             return true;
         }
 
@@ -94,7 +107,7 @@ public class DrawingView extends View {
 
     {
         paint.setColor(Color.BLACK);
-        paint.setStrokeWidth(5.f);
+        paint.setStrokeWidth(10.f);
     }
 
 
