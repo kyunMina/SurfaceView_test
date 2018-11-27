@@ -14,6 +14,7 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
 
     public TextView Counter;
+    public int a = 0;
 
     /** Called when the activity is first created. */
     @Override
@@ -28,7 +29,14 @@ public class MainActivity extends Activity {
         findViewById(R.id.drawingView).setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                Counter.setText("ss");
+
+                int event = motionEvent.getActionMasked();
+
+                switch (event){
+                    case MotionEvent.ACTION_UP:
+                        a++;
+                        Counter.setText(""+a);
+                }
 
                 return false;
             }
@@ -39,6 +47,8 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 view.undo();
+                a--;
+                Counter.setText(""+a);
             }
         });
 
@@ -47,6 +57,8 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 view.redo();
+                a++;
+                Counter.setText(""+a);
             }
         });
     }

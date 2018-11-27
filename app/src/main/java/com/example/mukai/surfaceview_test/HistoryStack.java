@@ -1,5 +1,7 @@
 package com.example.mukai.surfaceview_test;
 
+import android.widget.TextView;
+
 import java.util.Stack;
 
 public class HistoryStack<T> {
@@ -17,6 +19,7 @@ public class HistoryStack<T> {
         if( !undoStack.empty() ){
             result = undoStack.pop();
             redoStack.push(result);
+
         }
 
         return result;
