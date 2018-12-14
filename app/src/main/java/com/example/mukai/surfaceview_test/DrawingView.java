@@ -13,6 +13,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class DrawingView extends View {
 
@@ -20,6 +21,9 @@ public class DrawingView extends View {
     private ArrayList<PointF> currentStroke;
     public MainActivity mainActivity = new MainActivity();
     public TextView Counter = findViewById(R.id.counter);
+    //  test
+    public int a=0;
+    //
 
     public DrawingView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -27,10 +31,20 @@ public class DrawingView extends View {
         // TODO Auto-generated constructor stub
     }
 
+    @Override
+    public boolean performClick(){
+        super.performClick();
+        a++;
+        Toast toast = Toast.makeText(this.getContext(),""+a,Toast.LENGTH_SHORT);
+        toast.show();
+        return true;
+    }
+
     /**
      * アンドゥ
      */
     public void undo(){
+        a--;
         history.undo();
         invalidate();
     }
@@ -39,6 +53,7 @@ public class DrawingView extends View {
      * リドゥ
      */
     public void redo(){
+        a++;
         history.redo();
         invalidate();
     }
@@ -47,9 +62,6 @@ public class DrawingView extends View {
     public boolean onTouchEvent(MotionEvent event) {
         if( event.getAction() == MotionEvent.ACTION_DOWN){
             // 新しい描画
-//            currentStroke = new ArrayList<PointF>();
-//            return true;
-
             currentStroke = new ArrayList<PointF>();
             return true;
         }
